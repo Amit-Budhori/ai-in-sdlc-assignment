@@ -1,0 +1,18 @@
+diff --git a/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs b/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
+--- a/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
++++ b/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
+@@ -22,6 +22,14 @@ public class InvoicesController : ApiControllerBase
+         return Ok(invoices);
+     }
+
++    [HttpGet("due-today")]
++    public ActionResult<IReadOnlyList<Invoice>> DueToday()
++    {
++        var today = DateTime.Now.Date;
++        var due = _repository.GetAll().Where(i => i.CreatedAt.Date == today).ToList();
++        return Ok(due);
++    }
++
+     [HttpGet("{id}")]
+     public ActionResult<Invoice> GetById(string id)
+     {

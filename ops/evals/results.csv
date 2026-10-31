@@ -1,0 +1,49 @@
+run,case,model,prompt_version,verdict,finding_summary,confidence_reported,notes
+1,case-01,swe-2-high,v1,caught,"NullReferenceException on nullable Ids; partial-approval atomicity gap; Handle() bypassed",high,
+1,case-02,swe-2-high,v1,caught,"SQL injection via string interpolation; _queries undeclared",high,
+1,case-03,swe-2-high,v1,caught,"Pre-rounding discount changes cents; ToZero vs AwayFromZero semantics",medium-high,
+1,case-04,swe-2-high,v1,clean,,,"consistent rename, no defect"
+1,case-05,swe-2-high,v1,caught,"Missing RequireRole(Admin) on destructive Delete; Handle() bypassed",high,
+1,case-06,swe-2-high,v1,false_alarm,"Speculated DecidedAt nullability / exception-type assumptions 'could' fail",low-medium,"hedged; asserted possible compile/test failures on a clean diff"
+1,case-07,swe-2-high,v1,caught,"Full invoice + session object destructured into logs",high,
+1,case-08,swe-2-high,v1,caught,"Dictionary replaces ConcurrentDictionary; ContainsKey+index TOCTOU race",high,
+1,case-09,swe-2-high,v1,caught,"Sign-out cannot reset singleton in-memory store - README claim false",medium,
+1,case-10,swe-2-high,v1,caught,"Catch-all returns 200 'completed' swallowing all exceptions",high,
+1,case-11,swe-2-high,v1,caught,"due-today filters CreatedAt; DateTime.Now vs UTC mismatch",medium,
+1,case-12,swe-2-high,v1,clean,,,"correct nullable filter, no defect"
+2,case-01,swe-2-high,v1,caught,"NullReferenceException on nullable Ids; non-atomic bulk approve; error mapping bypassed",high,
+2,case-02,swe-2-high,v1,caught,"SQL injection; _queries undeclared; unvalidated customer param",high,
+2,case-03,swe-2-high,v1,caught,"Double rounding loses cents; AwayFromZero replaced by ToZero silently",medium-high,
+2,case-04,swe-2-high,v1,clean,,,"consistent rename, no defect"
+2,case-05,swe-2-high,v1,caught,"Missing RequireRole(Admin); no Handle() error mapping on Delete",high,
+2,case-06,swe-2-high,v1,false_alarm,"Speculated DecidedAt type and exception contracts could break tests",low,"hedged; all three 'findings' admitted unverifiable"
+2,case-07,swe-2-high,v1,caught,"Session + invoice payload dumped to logs",medium-high,
+2,case-08,swe-2-high,v1,caught,"Thread-safety regression; atomic TryAdd replaced by check-then-act",high,
+2,case-09,swe-2-high,v1,caught,"README sign-out reset claim inconsistent with singleton store",medium,
+2,case-10,swe-2-high,v1,caught,"Catch-all swallows exceptions returning false success",high,
+2,case-11,swe-2-high,v1,caught,"CreatedAt vs due-date mismatch; DateTime.Now vs UTC",medium,
+2,case-12,swe-2-high,v1,clean,,,"correct nullable filter, no defect"
+3,case-01,swe-2-high,v1,caught,"Nullable Ids dereferenced; Handle() bypass; partial application",high,
+3,case-02,swe-2-high,v1,caught,"SQL injection via interpolation",high,
+3,case-03,swe-2-high,v1,caught,"ToZero final rounding flips midpoint behaviour; pre-rounded discount",medium,
+3,case-04,swe-2-high,v1,clean,,,"mechanical rename, no defect"
+3,case-05,swe-2-high,v1,caught,"Missing RequireRole(Admin) on Delete; Handle() bypass",high,
+3,case-06,swe-2-high,v1,clean,,,"no defects found"
+3,case-07,swe-2-high,v1,caught,"Invoice + CurrentUser destructured into logs",medium-high,
+3,case-08,swe-2-high,v1,caught,"Thread-safety regression; TOCTOU on Add",high,
+3,case-09,swe-2-high,v1,caught,"Sign-out reset claim inconsistent with in-memory seeding model",medium,
+3,case-10,swe-2-high,v1,caught,"Catch-all false-success response",high,
+3,case-11,swe-2-high,v1,caught,"due-today uses CreatedAt; DateTime.Now local vs UTC",high,
+3,case-12,swe-2-high,v1,clean,,,"no defects found"
+4,case-01,swe-2-high,v2,caught,"Nullable Ids NRE; Handle() bypass; non-atomic bulk",high,
+4,case-02,swe-2-high,v2,caught,"SQL injection on customer and status; unvalidated params",high,
+4,case-03,swe-2-high,v2,caught,"Pre-rounded discount changes totals vs exact-subtract then round",high,
+4,case-04,swe-2-high,v2,clean,,,"pure rename; checked against all v2 categories"
+4,case-05,swe-2-high,v2,caught,"Missing RequireRole(Admin); Handle() bypass on Delete",high,
+4,case-06,swe-2-high,v2,clean,,,"no defects found"
+4,case-07,swe-2-high,v2,caught,"Invoice + CurrentUser payload logged",high,
+4,case-08,swe-2-high,v2,caught,"Thread-safety regression; TOCTOU Add",high,
+4,case-09,swe-2-high,v2,caught,"Sign-out reset claim likely false; hedged at low confidence",low,"named the defect but tentatively"
+4,case-10,swe-2-high,v2,caught,"Catch-all returns false success",high,
+4,case-11,swe-2-high,v2,caught,"due-today on CreatedAt; DateTime.Now vs UTC; extra speculative findings",medium,
+4,case-12,swe-2-high,v2,clean,,,"correct nullable filter; checked all v2 categories"

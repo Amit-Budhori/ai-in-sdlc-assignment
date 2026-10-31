@@ -1,0 +1,22 @@
+diff --git a/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs b/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
+--- a/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
++++ b/backend/src/InvoiceApp.Api/Controllers/InvoicesController.cs
+@@ -14,7 +14,7 @@ public class InvoicesController : ApiControllerBase
+
+     [HttpGet]
+-    public ActionResult<IReadOnlyList<Invoice>> GetAll([FromQuery] string? status)
++    public ActionResult<IReadOnlyList<Invoice>> GetAll([FromQuery] string? status, [FromQuery] decimal? minAmount)
+     {
+         var invoices = _repository.GetAll();
+
+@@ -28,6 +28,12 @@ public class InvoicesController : ApiControllerBase
+             invoices = invoices.Where(i => i.Status == parsed).ToList();
+         }
+
++        if (minAmount.HasValue)
++        {
++            invoices = invoices.Where(i => i.Amount >= minAmount.Value).ToList();
++        }
++
+         return Ok(invoices);
+     }
