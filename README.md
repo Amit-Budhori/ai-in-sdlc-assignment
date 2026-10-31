@@ -1,7 +1,6 @@
 # Invoice Approval Demo App
 
 > **AI in SDLC — Home Assignment 2 submission repo**: <https://github.com/Amit-Budhori/ai-in-sdlc-assignment>
-> **Demo video**: [ai-in-sdlc-assignment.mp4](ai-in-sdlc-assignment.mp4)
 
 A small invoice approval app used for live AI-in-SDLC demos. It is deliberately simple: a .NET 8 API, a plain web UI, and an in-memory store, so it runs with one command and no database.
 
